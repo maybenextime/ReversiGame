@@ -34,7 +34,6 @@ class GamePlay {
         this.currentColor = currentColor;
     }
 
-    // possible Move
     void effectBoard(CellState board[][], CellState curColor) {
         if (curColor == null) return;
         for (int i = 0; i < 8; i++) {
