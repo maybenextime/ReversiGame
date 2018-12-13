@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class firstMenu extends JPanel{
+public class FirstMenu extends JPanel{
     JButton start = new JButton();
     JRadioButton choseWhite = new JRadioButton("white");
     JRadioButton choseBlack = new JRadioButton("Black");
@@ -10,27 +10,32 @@ public class firstMenu extends JPanel{
     JRadioButton botEasy = new JRadioButton("Easy");
     JRadioButton botNormal = new JRadioButton("Normal");
     JRadioButton botHard = new JRadioButton("Hard");
-    char humanColor;
+    CellState humanColor;
+    private static Color backGroundColor= new Color(0xFFF2D6);
+    private static int button_width= 100;
+    private static int button_height= 50;
 
-    public firstMenu() {
+
+
+    FirstMenu() {
         this.init();
     }
-    public void init() {
+    private void init() {
         this.setLayout(null);
-        choseWhite.setBackground(new Color(0xFFF2D6));
-        choseWhite.setBounds(120, 100, 100, 50);
-        choseBlack.setBackground(new Color(0xFFF2D6));
-        choseBlack.setBounds(120, 150, 100, 50);
-        firstPlay.setBackground(new Color(0xFFF2D6));
-        firstPlay.setBounds(120, 230, 100, 50);
-        secondPlay.setBackground(new Color(0xFFF2D6));
-        secondPlay.setBounds(120, 280, 100, 50);
-        botEasy.setBackground(new Color(0xFFF2D6));
-        botEasy.setBounds(120, 360, 100, 50);
-        botNormal.setBackground(new Color(0xFFF2D6));
-        botNormal.setBounds(220, 360, 100, 50);
-        botHard .setBackground(new Color(0xFFF2D6));
-        botHard.setBounds(320, 360, 100, 50);
+        choseWhite.setBackground(backGroundColor);
+        choseWhite.setBounds(120, 100, button_width, button_height);
+        choseBlack.setBackground(backGroundColor);
+        choseBlack.setBounds(120, 150, button_width, button_height);
+        firstPlay.setBackground(backGroundColor);
+        firstPlay.setBounds(120, 230, button_width, button_height);
+        secondPlay.setBackground(backGroundColor);
+        secondPlay.setBounds(120, 280, button_width, button_height);
+        botEasy.setBackground(backGroundColor);
+        botEasy.setBounds(120, 360, button_width, button_height);
+        botNormal.setBackground(backGroundColor);
+        botNormal.setBounds(220, 360, button_width, button_height);
+        botHard .setBackground(backGroundColor);
+        botHard.setBounds(320, 360, button_width, button_height);
         this.add(choseBlack);
         this.add(choseWhite);
         this.add(firstPlay);
@@ -53,7 +58,7 @@ public class firstMenu extends JPanel{
     @Override
     public void paintComponent(Graphics g) {
         this.add(start);
-        g.setColor(new Color(0xFFF2D6));
+        g.setColor(backGroundColor);
         g.fillRect(0, 0, 510, 530);
         g.setColor(Color.BLACK);
         g.setFont(new Font("Serif", Font.BOLD, 25));
