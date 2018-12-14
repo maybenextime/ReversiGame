@@ -12,7 +12,7 @@ class MiniMax {
     }
 
     CoordValue.Coord scoutDecision(CellState[][] board, CellState curColor) {
-        CoordValue.MoveScore moveScore = this.scout(board, Turn.BOT, 0, curColor);
+        CoordValue.MoveScore moveScore = this.scout(board, Turn.BOT, 0,-99999,99999, curColor);
         return moveScore.getMove();
     }
 
@@ -58,7 +58,7 @@ class MiniMax {
         return value;
     }
 
-    private CoordValue.MoveScore scout(CellState[][] board, Turn turn, int depth, CellState curColor) {
+    private CoordValue.MoveScore scout(CellState[][] board, Turn turn, int depth,int alpha, int beta, CellState curColor) {
         if ((depth == this.maxDepth)) {
             return new CoordValue.MoveScore(null, evaluateBoard(board));
         } else {
@@ -83,16 +83,24 @@ class MiniMax {
                     gamePlayScout.applyMove(copyBoard, move, curColor);
                     changeColor(gamePlayScout);
                     gamePlayScout.effectBoard(gamePlayScout.currentBoard, gamePlayScout.currentColor);
-                    CoordValue.MoveScore current = scout(gamePlayScout.currentBoard, nexTurn, depth + 1, gamePlayScout.currentColor);
+                    CoordValue.MoveScore current = scout(gamePlayScout.currentBoard, nexTurn, depth + 1,alpha,beta, gamePlayScout.currentColor);
                     if (turn == Turn.BOT) {
                         if (current.getScore() > bestScore) {
                             bestScore = current.getScore();
                             bestMove = move;
                         }
+                        alpha= Math.max(current.getScore(),alpha);
+                        if (beta<=alpha){
+                            break;
+                        }
                     } else if (turn == Turn.HUMAN) {
                         if (current.getScore() < bestScore) {
                             bestScore = current.getScore();
                             bestMove = move;
+                        }
+                        beta=Math.min(beta, current.getScore());
+                        if(beta<=alpha){
+                            break;
                         }
                     }
                 }

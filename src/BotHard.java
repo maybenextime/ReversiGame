@@ -1,6 +1,6 @@
 public class BotHard implements Bot {
     private GamePlay game = new GamePlay();
-    private static int maxDepth = 5;
+    private static int maxDepth = 7;
 
     @Override
     public CoordValue.Coord move() {
