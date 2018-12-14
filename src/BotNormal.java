@@ -12,5 +12,6 @@ public class BotNormal implements Bot {
     public void attribute(GamePlay game) {
         this.game = game;
     }
+    
 }
 
